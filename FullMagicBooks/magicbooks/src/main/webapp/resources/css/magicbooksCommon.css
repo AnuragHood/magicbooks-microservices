@@ -1,0 +1,214 @@
+#container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    padding-top: 20px;
+
+    color: #e8eaf6;
+
+    background-color: #00a797;
+    font-size: 0.7em;
+    font-weight: lighter;
+}
+
+.nav-img {
+    width: 70px;
+    height: 48px;
+}
+
+#topbarsearch .input-field .prefix {
+    width: 0rem !important;
+    top: 0rem !important;
+}
+
+#topbarsearch nav ul li:hover,
+nav ul li.active {
+    background-color: white !important;
+}
+
+.input-field .prefix ~ input,
+.input-field .prefix ~ textarea,
+.input-field .prefix ~ label,
+.input-field .prefix ~ .validate ~ label,
+.input-field .prefix ~ .autocomplete-content {
+    margin-left: 1rem !important;
+}
+
+.logo {
+    display: inline-block;
+    height: 100%;
+    font-size: 1.5em;
+}
+
+.logo > img {
+    vertical-align: middle;
+}
+
+input[type="search"],
+input[type="password"],
+input[type="text"] {
+    color: black !important;
+    font-weight: 700 !important;
+}
+
+body {
+    font-size: 1em;
+    font-weight: 700;
+    font-style: normal;
+    font-family: cursive;
+    font-variant: normal;
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+}
+
+.collection .collection-item {
+    text-align: center;
+}
+
+select[required]:focus {
+    outline: green !important;
+}
+
+select[required] {
+    display: block;
+    padding: 0;
+    position: absolute;
+    background: transparent;
+    color: transparent;
+    border: none;
+    top: 0;
+}
+
+.btn-small {
+    line-height: 30px;
+}
+
+#autocomplete-search-input {
+    color: white !important;
+}
+
+.responsive-img {
+    object-fit: contain !important;
+}
+
+.indicator-item.active {
+    background-color: green !important;
+}
+
+.indicator-item {
+    background-color: black !important;
+}
+
+.tabs-content.carousel .carousel-item {
+    height: 100% !important;
+}
+
+.special-nav {
+    height: 30px;
+    line-height: 30px;
+}
+
+.special-nav i, .special-nav [class^="mdi-"], .special-nav [class*="mdi-"], .special-nav i.material-icons {
+    height: 30px;
+    line-height: 30px;
+}
+
+.special-nav .button-collapse i {
+    height: 30px;
+    line-height: 30px;
+}
+
+.special-nav .brand-logo {
+    font-size: 1.6rem;
+}
+
+@media only screen and (min-width: 601px) {
+    .special-nav, nav .nav-wrapper.special i {
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.dropdown-content {
+    width: auto !important;;
+}
+
+.card.hoverable {
+    height: 404px !important;
+
+}
+
+.disabled {
+    pointer-events: none;
+    background: #ccc;
+    z-index: -1;
+}
+
+.delete {
+    color: red;
+}
+
+.filterRadioButtons {
+
+    display: inline;
+}
+
+.yellow-text.right {
+    margin-left: -3px;
+}
+
+[type="checkbox"] + span:not(.lever) {
+    padding-left: 24px !important;
+}
+
+.mobile.yellow-text {
+    font-size: 18px !important;
+}
+
+[type="checkbox"] + span {
+    font-size: 13px !important;
+
+}
+
+.responsive-image {
+    margin: 0 auto 1em auto;
+
+    height: 180px;
+    overflow: hidden;
+
+}
+.fake-link {
+    color: blue;
+    text-decoration: blink;
+    cursor: pointer;
+}
+
+.blur{
+    opacity: .7;
+    z-index: -1;
+    pointer-events: none;
+    background: silver;
+}
+#toast-container {
+    top: 7% !important;
+    right: auto !important;
+    bottom: auto;
+    left:40%;
+}
+.non-blur{
+    opacity: 1;
+    z-index: 1;
+    pointer-events: visible;
+}

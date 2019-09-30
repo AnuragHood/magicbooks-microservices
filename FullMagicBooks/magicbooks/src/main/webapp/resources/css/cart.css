@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:300);
+
+.shoppingbasket {
+    width: 45px;
+    height: 30px;
+    background-color: teal;
+    position: relative;
+    font-family: 'Comfortaa', cursive;
+}
+
+.basketitems {
+    color: #fff;
+    font-size: 80%;
+    background-color: #e74c3c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -90%);
+    -moz-transform: translate(-50%, -90%);
+    transform: translate(-50%, -90%);
+    padding: 0 12%;
+    border-radius: 1000px;
+}
+
+.shoppingbasket .top {
+    width: 60%;
+    height: 10%;
+    border-radius: 1000px;
+    background-color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.shoppingbasket .bottom {
+    width: 50%;
+    height: 10%;
+    border-radius: 1000px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.shoppingbasket .left {
+    width: 50%;
+    height: 10%;
+    border-radius: 1000px;
+    background-color: #fff;
+    position: absolute;
+    top: 45%;
+    left: 1%;
+    -webkit-transform: rotate(80deg);
+    -moz-transform: translateX(80deg);
+    transform: translateX(80deg);
+}
+
+.shoppingbasket .right {
+    width: 50%;
+    height: 10%;
+    border-radius: 1000px;
+    background-color: #fff;
+    position: absolute;
+    top: 45%;
+    right: 1%;
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: translateX(-80deg);
+    transform: translateX(-80deg);
+}
+
+.value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 35px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.value-button:hover {
+    cursor: pointer;
+}
+
+.cartValue {
+    width: 25px !important;
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}

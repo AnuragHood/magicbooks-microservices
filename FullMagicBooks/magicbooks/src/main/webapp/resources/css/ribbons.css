@@ -1,0 +1,23 @@
+.sash tr td.prova{
+    position: relative;
+
+    overflow:hidden;
+    font-size:12px;
+    z-index: 1;
+
+}
+.sash tr td.prova:after {
+    content: attr(data-ribbon);
+    position: absolute;
+    width: 108px;
+    height: 77px;
+    background: red;
+    color: white;
+    text-align: center;
+    line-height: 121px;
+    top: -25px;
+    left: -42px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
