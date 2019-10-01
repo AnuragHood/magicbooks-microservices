@@ -11,127 +11,138 @@ import java.util.Set;
 @SequenceGenerator(name = "seq", initialValue = 357948, allocationSize = 100)
 public class User {
 
-	@Id
-	@JsonInclude
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @Id
+    @JsonInclude
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 
-	private int id;
+    private int id;
 
-	private String email;
+    private String email;
 
-	private String password;
+    private String password;
 
-	private String name;
+    private String name;
 
-	private String lastName;
+    private String lastName;
 
-	private String gender;
+    private String gender;
 
-	private String phone;
-	
+    private String phone;
+
     @Transient
-	private String registrationMode;
+    private String registrationMode;
 
-	private char active;
-	
-	private String image;
+    private char active;
 
-	public String getImage() {
-		return image;
-	}
+    private String image;
+    @Transient
+    private Address address;
 
-	public void setImage(String image) {
-		this.image = image;
-	}
 
-	public String getRegistrationMode() {
-		return registrationMode;
-	}
+    public Address getAddress() {
+        return address;
+    }
 
-	public void setRegistrationMode(String registrationMode) {
-		this.registrationMode = registrationMode;
-	}
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+    public String getImage() {
+        return image;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getRegistrationMode() {
+        return registrationMode;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setRegistrationMode(String registrationMode) {
+        this.registrationMode = registrationMode;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
-	public String getLastName() {
-		return lastName;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public char getActive() {
-		return active;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public char getActive() {
+        return active;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setActive(char active) {
-		this.active = active;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setActive(char active) {
+        this.active = active;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
-				+ lastName + ", gender=" + gender + ", phone=" + phone + ", registrationMode=" + registrationMode
-				+ ", active=" + active + ", image=" + image + ", roles=" + roles + "]";
-	}
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
+                + lastName + ", gender=" + gender + ", phone=" + phone + ", registrationMode=" + registrationMode
+                + ", active=" + active + ", image=" + image + ", roles=" + roles + "]";
+    }
 }
