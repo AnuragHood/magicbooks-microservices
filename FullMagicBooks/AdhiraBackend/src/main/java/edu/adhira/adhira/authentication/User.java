@@ -63,7 +63,7 @@ public class User {
         this.registrationMode = registrationMode;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
@@ -141,8 +141,21 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
-                + lastName + ", gender=" + gender + ", phone=" + phone + ", registrationMode=" + registrationMode
-                + ", active=" + active + ", image=" + image + ", roles=" + roles + "]";
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone='" + phone + '\'' +
+                ", registrationMode='" + registrationMode + '\'' +
+                ", active=" + active +
+                ", image='" + image + '\'' +
+                ", address=" + address +
+                ", roles=" + roles +
+                '}';
     }
+
+
 }

@@ -3,15 +3,17 @@ package edu.adhira.adhira.authentication;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @EnableAutoConfiguration
+@SequenceGenerator(name = "seq", initialValue = 565482147, allocationSize = 100)
+
 public class Address {
     @Id
     @JsonInclude
-    private int userId;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    private int addressId;
     private String flateNo;
     private String street;
     private String city;
@@ -20,25 +22,14 @@ public class Address {
 
     public Address() {
     }
+    
+    public int getaddressId() {
 
-    public Address(int userId, String flateNo, String street, String city, long pin, String state, String country) {
-        this.userId = userId;
-        this.flateNo = flateNo;
-        this.street = street;
-        this.city = city;
-
-        this.pin = pin;
-        this.state = state;
-        this.country = country;
+        return addressId;
     }
 
-    public int getUserId() {
-
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setaddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     private String country;
