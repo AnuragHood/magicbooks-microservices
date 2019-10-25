@@ -11,7 +11,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,8 +44,6 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     AddressRepo addressRepo;
 
-    @Autowired
-    Address address;
 
     private static boolean result;
     // Find your Account Sid and Token at twilio.com/user/account
@@ -69,8 +66,19 @@ public class AuthServiceImpl implements AuthService {
         return 0;
     }
 
-    public int compPassword(Login login) {
-        String result = userRepo.compPassword(login.getEmail());
+    private int compPasswordForEmail(Login login) {
+        String result = userRepo.compPasswordForMail(login.getUserName());
+
+        if (login.getPassword() != null & bCryptPasswordEncoder.matches(login.getPassword(), result)) {
+
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private int compPasswordForMobile(Login login) {
+        String result = userRepo.compPasswordForMobile(login.getUserName());
 
         if (login.getPassword() != null & bCryptPasswordEncoder.matches(login.getPassword(), result)) {
 
@@ -88,18 +96,10 @@ public class AuthServiceImpl implements AuthService {
                 user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
                 user.setActive('N');
                 List<Role> userRole = roleRepo.findAll();
-                logger.info("ROLES{}",userRole.toString());
+                logger.info("ROLES{}", userRole.toString());
                 user.setRoles(new HashSet<Role>(userRole));
 
                 userRepo.save(user);
-               /* address.setUserId(user.getId());
-                address.setCity(user.getAddress().getCity());
-                address.setCountry(user.getAddress().getCountry());
-                address.setFlateNo(user.getAddress().getFlateNo());
-                address.setPin(user.getAddress().getPin());
-                address.setStreet(user.getAddress().getStreet());
-                address.setCountry(user.getAddress().getCountry());*/
-                //addressRepo.save(user.getAddress());
 
                 if (user.getRegistrationMode().equals("email")) {
                     result = sendVerificationMail(user);
@@ -140,13 +140,21 @@ public class AuthServiceImpl implements AuthService {
 
     }
 
-    public boolean login(Login login) {
-        if (compPassword(login) == 1) {
-            if (userRepo.findByEmail(login.getEmail()).getActive() == 'Y')
+    public boolean loginByEmail(Login login) {
+        if (compPasswordForEmail(login) == 1) {
+            if (userRepo.findByEmail(login.getUserName()).getActive() == 'Y')
                 return true;
         }
         return false;
+    }
 
+    @Override
+    public boolean loginByMobile(Login login) {
+        if (compPasswordForMobile(login) == 1) {
+            if (userRepo.findByPhone(login.getUserName()).getActive() == 'Y')
+                return true;
+        }
+        return false;
     }
 
     @Transactional
@@ -168,7 +176,7 @@ public class AuthServiceImpl implements AuthService {
                     + confirmationToken.getConfirmationToken() + "&userId=" + user.getId() + ">"
                     + "Verify your account!!</a>");
 
-            emailSenderService.sendEmail(mailMessage);
+             emailSenderService.sendEmail(mailMessage);
             return true;
         } catch (Exception e) {
             logger.info("Problem in email verification " + e.getMessage());
@@ -234,8 +242,6 @@ public class AuthServiceImpl implements AuthService {
     public User searchUser(String query) {
         return userRepo.searchUser(query, query, query);
     }
-    @Bean
-    private Address getAddress(){
-        return new Address();
-    }
+
+
 }
